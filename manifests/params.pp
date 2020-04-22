@@ -1,12 +1,19 @@
-# @summary A short summary of the purpose of this class
+# @summary Default Parameter class
 #
-# A description of what this class does
+# This class contain the default parameter values
 #
 # @example
 #   include openvidu::params
 class openvidu::params {
+  $install_path         = '/opt/openvidu-server'
   $kms_version          = '6.13.0'
+  $logfile              = '/var/log/openvidu.log'
+  $network_interfaces   = 'eth0'
+  $recording            = true
+  $recording_autostop   = 0
+  $recording_path       = '/opt/openvidu-server/recording'
   $openvidu_version     = '2.12.0'
+  $secret               = 'MY_SECRET'
   $turnserver_enabled   = 1
   $public_port          = 4443
 }

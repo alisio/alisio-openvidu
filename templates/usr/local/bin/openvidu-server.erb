@@ -1,19 +1,19 @@
 #!/bin/sh
 SERVICE_NAME=openviduserver
-PATH_TO_JAR=/opt/openvidu-server/openvidu-server-<%= @openvidu_version %>.jar
+PATH_TO_JAR=<%= @install_path %>/openvidu-server-<%= @openvidu_version %>.jar
 PID_PATH_NAME=/tmp/openviduserver-pid
-OPCOES="-Dopenvidu.secret=MY_SECRET \
+OPCOES="-Dopenvidu.secret=<%= @secret %> \
 	-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \
-	-Dopenvidu.recording=true \
-	-Dopenvidu.recording.path=/opt/openvidu/recordings
-	-Dopenvidu.recording.autostop-timeout=0"
+	-Dopenvidu.recording=<%= @recording %> \
+	-Dopenvidu.recording.path=<%= @recording_path %> \
+	-Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %>"
 case $1 in
 start)
        echo "Starting $SERVICE_NAME ..."
   if [ ! -f $PID_PATH_NAME ]; then
        cd /opt/openvidu-server/
-       #nohup java -jar ${OPCOES} $PATH_TO_JAR /tmp 2>> /var/log/openvidu.log  >>/var/log/openvidu.log &
-       nohup java -jar ${OPCOES} $PATH_TO_JAR >> /var/log/openvidu.log 2>> /var/log/openvidu.log &
+       #nohup java -jar ${OPCOES} $PATH_TO_JAR /tmp 2>> <%= @logfile %>  >><%= @logfile %> &
+       nohup java -jar ${OPCOES} $PATH_TO_JAR >> <%= @logfile %> 2>> <%= @logfile %> &
        exit
                    echo $! > $PID_PATH_NAME
        echo "$SERVICE_NAME started ..."
@@ -41,7 +41,7 @@ restart)
       echo "$SERVICE_NAME stopped ...";
       rm $PID_PATH_NAME
       echo "$SERVICE_NAME starting ..."
-      nohup java -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null &
+      nohup java -jar $PATH_TO_JAR /tmp >> <%= @logfile %> 2>> <%= @logfile %> &
       echo $! > $PID_PATH_NAME
       echo "$SERVICE_NAME started ..."
   else

@@ -6,39 +6,68 @@
 #   include openvidu::install
 class openvidu::install inherits openvidu {
   apt::source { 'kurento':
-    location => "http://ubuntu.openvidu.io/${kms_version}",
-    release       => $facts['os']['distro']['codename'],
-    repos         => 'kms6',
-    architecture  => $facts['architecture'],
-    key           => {
-      id          => '5AFA7A83',
-      server      => 'keyserver.ubuntu.com',
+    location     => "http://ubuntu.openvidu.io/${openvidu::kms_version}",
+    release      => $facts['os']['distro']['codename'],
+    repos        => 'kms6',
+    architecture => $facts['architecture'],
+    key          => {
+      id     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
+      server => 'keyserver.ubuntu.com',
     },
-  } ->
-  user { 'kurento':
+  }
+  -> class {'docker':}
+  -> group { ['openvidu','kurento']:}
+  -> user { 'kurento':
+    ensure  => present,
     comment => 'Kurento',
-    home => '/home/kurento',
-    ensure => present,
-    shell => '/usr/sbin/nologin',
-    # uid => '501',
-    # gid => '20',
-  } ->
-  package {  [
+    home    => '/home/kurento',
+    shell   => '/usr/sbin/nologin',
+    groups  => ['kurento','openvidu'],
+  }
+  -> user { 'openvidu':
+    ensure  => present,
+    comment => 'openvidu',
+    home    => '/home/openvidu',
+    shell   => '/usr/sbin/nologin',
+  }
+  -> package {  [
                 'kurento-media-server',
                 'coturn',
                 'redis-server',
-                'openjdk-8-jre'
+                'openjdk-8-jre',
+                'unzip',
               ]:
     ensure => installed,
   }
-  file { '/usr/local/bin/openvidu-server':
+  -> file { '/etc/systemd/system/openviduserver.service':
     ensure => file,
-    content => template('openvidu/usr/local/bin/openvidu-server.erb'),
-    mode => '0755',
+    source => 'puppet:///modules/openvidu/etc/systemd/system/openviduserver.service',
+    mode   => '0644',
   }
-  file { '/opt/openvidu-server':
-    ensure => directory,
+  ~> exec { 'Reload daemon control':
+    command     => 'systemctl daemon-reload',
+    path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+    refreshonly => true,
+  }
+  -> file { '/usr/local/bin/openvidu-server':
+    ensure  => file,
     content => template('openvidu/usr/local/bin/openvidu-server.erb'),
-    mode => '0755',
+    mode    => '0755',
+  }
+  -> exec { 'Create openvidu install folder':
+    command => "mkdir -p ${openvidu::install_path}",
+    unless  => "test -d ${openvidu::install_path}",
+    path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+  }
+  -> file { $openvidu::recording_path :
+    ensure => directory,
+    mode   => '0770',
+    owner  => 'openvidu',
+    group  => 'openvidu',
+  }
+  -> archive { "Download openvidu-server-${openvidu::openvidu_version}.jar":
+    ensure => present,
+    path   => "${openvidu::install_path}/openvidu-server-${openvidu::openvidu_version}.jar",
+    source => "http://github.com/OpenVidu/openvidu/releases/download/v${openvidu::openvidu_version}/openvidu-server-${openvidu::openvidu_version}.jar",
   }
 }

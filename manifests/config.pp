@@ -1,24 +1,30 @@
-# @summary A short summary of the purpose of this class
-#
-# A description of what this class does
+# @summary This class configs the openvidu server and dependencies
 #
 # @example
 #   include openvidu::config
 class openvidu::config inherits openvidu {
-  contain openvidu::install
+  contain 'openvidu::install'
   file { '/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini':
-    ensure => file,
+    ensure  => file,
     content => template('openvidu/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini.erb'),
-    mode => '0644',
+    mode    => '0644',
   }
-  file { '/etc/turnserver.conf':
-    ensure => file,
+  -> file { '/etc/turnserver.conf':
+    ensure  => file,
     content => template('openvidu/etc/turnserver.conf.erb'),
-    mode => '0644',
+    mode    => '0644',
   }
-  file { '/etc/default/coturn':
-    ensure => file,
+  -> file { '/etc/default/coturn':
+    ensure  => file,
     content => template('openvidu//etc/default/coturn.erb'),
-    mode => '0644',
+    mode    => '0644',
+  }
+  logrotate::rule { 'openvidu':
+    path         => $openvidu::logfile,
+    rotate       => 1,
+    rotate_every => 'day',
+    ifempty      => true,
+    dateext      => true,
+    maxage       => 7
   }
 }

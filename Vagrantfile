@@ -69,9 +69,11 @@ Vagrant.configure("2") do |config|
     dpkg -i puppet5-release-bionic.deb
     apt-get update
     apt-get install -y puppet-agent facter
-    puppet module install puppetlabs-apt
+    /opt/puppetlabs/bin/puppet module install puppetlabs-apt
+    /opt/puppetlabs/bin/puppet module install puppetlabs-docker
+    /opt/puppetlabs/bin/puppet module install puppet-archive
+    /opt/puppetlabs/bin/puppet module install puppet-logrotate
     ln -s /vagrant /etc/puppetlabs/code/environments/production/modules/openvidu
-    source ~/.
     /opt/puppetlabs/bin/puppet apply /vagrant/tests/openvidu.pp
   SHELL
 end

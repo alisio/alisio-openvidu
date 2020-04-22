@@ -1,0 +1,13 @@
+[Unit]
+ Description = Openvidu Service
+ After network.target = openviduserver.service
+[Service]
+ Type = forking
+ Restart=always
+ RestartSec=1
+ SuccessExitStatus=143
+ ExecStart = /usr/local/bin/openvidu-server start
+ ExecStop = /usr/local/bin/openvidu-server stop
+ ExecReload = /usr/local/bin/openvidu-server reload
+[Install]
+ WantedBy=multi-user.target
