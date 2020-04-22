@@ -2,9 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
-## Release 0.1.1
+## Release 0.1.2
 
-First version
+**Features**
+
+* Add a parameter for setting the kurento media server uri.
+
+**Bugfixes**
+
+* Fix ordering issues
+
+**Known Issues**
+
+
+## Release 0.1.1
 
 **Features**
 

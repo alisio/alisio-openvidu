@@ -3,7 +3,7 @@
 # @example
 #   include openvidu::config
 class openvidu::config inherits openvidu {
-  contain 'openvidu::install'
+  # contain openvidu::install
   file { '/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini':
     ensure  => file,
     content => template('openvidu/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini.erb'),

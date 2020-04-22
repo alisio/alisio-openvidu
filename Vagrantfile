@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
     wget https://apt.puppetlabs.com/puppet5-release-bionic.deb
     dpkg -i puppet5-release-bionic.deb
     apt-get update
-    apt-get install -y puppet-agent facter
+    apt-get install -y puppet-agent facter pdk
     /opt/puppetlabs/bin/puppet module install puppetlabs-apt
     /opt/puppetlabs/bin/puppet module install puppetlabs-docker
     /opt/puppetlabs/bin/puppet module install puppet-archive

@@ -5,7 +5,7 @@
 # @example
 #   include openvidu::services
 class openvidu::services inherits openvidu {
-  contain 'openvidu::config'
+  # contain openvidu::config
   service { [
       'redis-server',
       'coturn',

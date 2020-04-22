@@ -6,6 +6,7 @@ OPCOES="-Dopenvidu.secret=<%= @secret %> \
 	-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \
 	-Dopenvidu.recording=<%= @recording %> \
 	-Dopenvidu.recording.path=<%= @recording_path %> \
+	-Dkms.uris=<%= @kms_uris %> \
 	-Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %>"
 case $1 in
 start)

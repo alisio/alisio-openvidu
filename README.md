@@ -14,6 +14,8 @@
 
 This module allows you to install Openvidu-server and its dependencies. You will be able to deploy an OpenVidu based video conference server.
 
+For more info on OpenVidu, please refer to the project [documents](https://docs.openvidu.io) website. This module as loosely based on the ["Deploying OpenVidu on Ubuntu"](https://docs.openvidu.io/en/2.12.0/deployment/deploying-ubuntu/) document
+
 ## Setup
 
 ### What openvidu affects
@@ -48,6 +50,7 @@ class {'openvidu':
 * `network_interfaces` - The network interfaces listening (csv list). Default 'eth0'
 * `install_path` - The OpenVidu install path (string). Default '/opt/openvidu-server'
 * `kms_version` - The version of the Kurento-media-server (string). Default '6.13.0'
+* `kms_uri` - KMS URL's to which OpenVidu Server will try to connect. They are tested in order until a valid one is found (array). Default Value '["ws://localhost:8888/kurento"]'
 * `logfile` - The OpenVidu logfile path (string). Default '/var/log/openvidu.log'
 * `recording` - Enable or disable video recording (boolean). Default true
 * `recording_autostop` - Time in seconds to stop recording a finalized conference (integer). Default '0'
@@ -59,7 +62,6 @@ class {'openvidu':
 
 This module is tested on the following platforms:
 * Ubuntu 18.04
-
 
 ## Development
 
