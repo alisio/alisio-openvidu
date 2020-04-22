@@ -11,7 +11,7 @@ class openvidu::install inherits openvidu {
     repos        => 'kms6',
     architecture => $facts['architecture'],
     key          => {
-      id     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
+      id     => '5AFA7A83',
       server => 'keyserver.ubuntu.com',
     },
   }
