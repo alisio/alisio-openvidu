@@ -1,6 +1,6 @@
 {
   "name": "alisio-openvidu",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Alisio Meneses",
   "summary": "This module allows you to install Openvidu-server and dependencies",
   "license": "Apache-2.0",
