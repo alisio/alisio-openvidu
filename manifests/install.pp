@@ -65,6 +65,9 @@ class openvidu::install inherits openvidu {
     owner  => 'openvidu',
     group  => 'openvidu',
   }
+  -> file { '/etc/kurento/modules/kurento' :
+    ensure => directory,
+  }
   -> archive { "Download openvidu-server-${openvidu::openvidu_version}.jar":
     ensure => present,
     path   => "${openvidu::install_path}/openvidu-server-${openvidu::openvidu_version}.jar",
