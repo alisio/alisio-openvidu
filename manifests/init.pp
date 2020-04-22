@@ -18,7 +18,3 @@ class openvidu (
   ) inherits openvidu::params {
   contain 'openvidu::services'
 }
-
-Class['openvidu::install']
--> Class['openvidu::config']
-->  Class['openvidu::service']
