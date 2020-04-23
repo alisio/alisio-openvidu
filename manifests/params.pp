@@ -5,9 +5,9 @@
 # @example
 #   include openvidu::params
 class openvidu::params {
-  $install_path         = '/opt/openvidu-server'
+  $install_path         = '/opt/openvidu'
   $kms_version          = '6.13.0'
-  $kms_uris             = ['ws://localhost:8888/kurento']
+  $kms_uris             = ["ws://localhost:8888/kurento"]
   $logfile              = '/var/log/openvidu.log'
   $network_interfaces   = 'eth0'
   $recording            = true
