@@ -49,11 +49,6 @@ class openvidu::install inherits openvidu {
     path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
     refreshonly => true,
   }
-  -> file { '/usr/local/bin/openvidu-server':
-    ensure  => file,
-    content => template('openvidu/usr/local/bin/openvidu-server.erb'),
-    mode    => '0755',
-  }
   -> exec { 'Create openvidu install folder':
     command => "mkdir -p ${openvidu::install_path}",
     unless  => "test -d ${openvidu::install_path}",
