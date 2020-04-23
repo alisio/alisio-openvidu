@@ -3,7 +3,7 @@ SERVICE_NAME=openviduserver
 PATH_TO_JAR=<%= @install_path %>/openvidu-server-<%= @openvidu_version %>.jar
 PID_PATH_NAME=/tmp/openviduserver-pid
 OPCOES="-Dopenvidu.secret=<%= @secret %> \
-	-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \
+	-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \
 	-Dopenvidu.recording=<%= @recording %> \
 	-Dopenvidu.recording.path=<%= @recording_path %> \
 	-Dkms.uris=<%= @kms_uris %> \
@@ -12,7 +12,7 @@ case $1 in
 start)
        echo "Starting $SERVICE_NAME ..."
   if [ ! -f $PID_PATH_NAME ]; then
-       cd /opt/openvidu-server/
+       cd <%= @install_path %>
        #nohup java -jar ${OPCOES} $PATH_TO_JAR /tmp 2>> <%= @logfile %>  >><%= @logfile %> &
        nohup java -jar ${OPCOES} $PATH_TO_JAR >> <%= @logfile %> 2>> <%= @logfile %> &
        exit

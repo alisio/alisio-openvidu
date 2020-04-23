@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 **Features**
 
 * change default openvidu install folder
+* add public_url variable
+* remove hardcoded install_path
 
 **Bugfixes**
 

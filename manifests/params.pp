@@ -7,7 +7,7 @@
 class openvidu::params {
   $install_path         = '/opt/openvidu'
   $kms_version          = '6.13.0'
-  $kms_uris             = ["ws://localhost:8888/kurento"]
+  $kms_uris             = '["ws://localhost:8888/kurento"]'
   $logfile              = '/var/log/openvidu.log'
   $network_interfaces   = 'eth0'
   $recording            = true
@@ -17,4 +17,5 @@ class openvidu::params {
   $secret               = 'MY_SECRET'
   $turnserver_enabled   = 1
   $public_port          = 4443
+  $public_url           = $openvidu::public_ip
 }

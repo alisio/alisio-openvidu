@@ -47,6 +47,7 @@ class {'openvidu':
 
 ### Parameters
 * `public_ip` - The public IP address of your server. No default
+* `public_url` - The public url address of your server (string). Default 'localhost' 
 * `network_interfaces` - The network interfaces listening (csv list). Default 'eth0'
 * `install_path` - The OpenVidu install path (string). Default '/opt/openvidu-server'
 * `kms_version` - The version of the Kurento-media-server (string). Default '6.13.0'
