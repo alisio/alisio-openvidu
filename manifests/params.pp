@@ -12,7 +12,7 @@ class openvidu::params {
   $network_interfaces   = 'eth0'
   $recording            = true
   $recording_autostop   = 0
-  $recording_path       = '/opt/openvidu-server/recording'
+  $recording_path       = '/opt/openvidu/recording'
   $openvidu_version     = '2.12.0'
   $secret               = 'MY_SECRET'
   $turnserver_enabled   = 1
