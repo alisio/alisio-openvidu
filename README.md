@@ -47,15 +47,15 @@ class {'openvidu':
 
 ### Parameters
 * `public_ip` - The public IP address of your server. No default
-* `public_url` - The public url address of your server (string). Default 'localhost' 
+* `public_url` - The public url address of your server (string). Default is the public ip
 * `network_interfaces` - The network interfaces listening (csv list). Default 'eth0'
-* `install_path` - The OpenVidu install path (string). Default '/opt/openvidu-server'
+* `install_path` - The OpenVidu install path (string). Default '/opt/openviduserver'
 * `kms_version` - The version of the Kurento-media-server (string). Default '6.13.0'
 * `kms_uris` - KMS URL's to which OpenVidu Server will try to connect. They are tested in order until a valid one is found (array). Default Value '["ws://localhost:8888/kurento"]'
 * `logfile` - The OpenVidu logfile path (string). Default '/var/log/openvidu.log'
 * `recording` - Enable or disable video recording (boolean). Default true
 * `recording_autostop` - Time in seconds to stop recording a finalized conference (integer). Default '0'
-* `recording_path` - Path where the video files are recorded (string). Default '/opt/openvidu-server/recording'
+* `recording_path` - Path where the video files are recorded (string). Default '/opt/openviduserver/recording'
 * `secret` - Openvidu APP Secre (string). Default 'MY_SECRET'
 * `turnserver_enabled` - Enable or disable the included COTURN server
 
