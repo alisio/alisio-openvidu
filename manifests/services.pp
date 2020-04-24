@@ -21,5 +21,6 @@ class openvidu::services inherits openvidu {
     enable     => true,
     hasrestart => true,
     hasstatus  => true,
+    subscribe  => File['/usr/local/bin/openvidu-server']
   }
 }
