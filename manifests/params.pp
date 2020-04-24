@@ -6,6 +6,9 @@
 #   include openvidu::params
 class openvidu::params {
   $install_path         = '/opt/openvidu'
+  $jks_path             = ''
+  $jks_store_password   = 'PASSWORD'
+  $jks_alias            = 'ALIAS'
   $kms_version          = '6.13.0'
   $kms_uris             = '["ws://localhost:8888/kurento"]'
   $logfile              = '/var/log/openvidu.log'
@@ -19,4 +22,3 @@ class openvidu::params {
   $public_port          = 4443
   $public_url           = 'not_set'
 }
-virtu

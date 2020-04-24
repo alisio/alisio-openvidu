@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 * change default openvidu install folder
 * add public_url variable
 * remove hardcoded install_path
+* Restart openvidu service when config file changes
+* Add option to set your own certificate through java key store
 
 **Bugfixes**
 

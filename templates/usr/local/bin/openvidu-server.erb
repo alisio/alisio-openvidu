@@ -9,10 +9,15 @@ OPCOES=" \
 -Dkms.uris=<%= @kms_uris %> \
 -Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %> \
 <% if @public_url == 'not_set'
-%>-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \
-<% else
-%>-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \
-<% end %>
+%>-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \<%
+else
+%>-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \<%
+end %>
+<% if @jks_path != ''
+%>-Dserver.ssl.key-store=<%= @jks_path %> \
+-Dserver.ssl.key-store-password=<%= @jks_store_password %> \
+-Dserver.ssl.key-alias=<%= @jks_alias %> \<%
+end %>
 "
 
 
