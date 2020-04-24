@@ -32,4 +32,12 @@ class openvidu::config inherits openvidu {
     dateext      => true,
     maxage       => 7
   }
+  logrotate::rule { 'openvidu_error':
+    path         => $openvidu::logfile_error,
+    rotate       => 1,
+    rotate_every => 'day',
+    ifempty      => true,
+    dateext      => true,
+    maxage       => 7
+  }
 }

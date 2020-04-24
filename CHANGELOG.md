@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file.
 * remove hardcoded install_path
 * Restart openvidu service when config file changes
 * Add option to set your own certificate through java key store
+* Separate error log using variable logfile_error
+
 
 **Bugfixes**
 

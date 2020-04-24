@@ -12,6 +12,7 @@ class openvidu::params {
   $kms_version          = '6.13.0'
   $kms_uris             = '["ws://localhost:8888/kurento"]'
   $logfile              = '/var/log/openvidu.log'
+  $logfile_error        = '/var/log/openvidu_error.log'
   $network_interfaces   = 'eth0'
   $recording            = true
   $recording_autostop   = 0

@@ -52,10 +52,11 @@ class {'openvidu':
 * `install_path` - The OpenVidu install path (string). Default '/opt/openviduserver'
 * `jks_store_password` - Path for using custom JKS certificate
 * `jks_alias` - Password for the custom JKS
-* `kms_version`  Alias for the custom JKS	
+* `kms_version`  Alias for the custom JKS
 * `kms_version` - The version of the Kurento-media-server (string). Default '6.13.0'
 * `kms_uris` - KMS URL's to which OpenVidu Server will try to connect. They are tested in order until a valid one is found (array). Default Value '["ws://localhost:8888/kurento"]'
 * `logfile` - The OpenVidu logfile path (string). Default '/var/log/openvidu.log'
+* `logfile_error` - The OpenVidu error logfile path (string). Default '/var/log/openvidu_error.log'
 * `recording` - Enable or disable video recording (boolean). Default true
 * `recording_autostop` - Time in seconds to stop recording a finalized conference (integer). Default '0'
 * `recording_path` - Path where the video files are recorded (string). Default '/opt/openviduserver/recording'
