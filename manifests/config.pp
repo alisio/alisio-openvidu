@@ -19,6 +19,11 @@ class openvidu::config inherits openvidu {
     content => template('openvidu//etc/default/coturn.erb'),
     mode    => '0644',
   }
+  -> file { '/usr/local/bin/openvidu-server':
+    ensure  => file,
+    content => template('openvidu/usr/local/bin/openvidu-server.erb'),
+    mode    => '0755',
+  }
   logrotate::rule { 'openvidu':
     path         => $openvidu::logfile,
     rotate       => 1,
