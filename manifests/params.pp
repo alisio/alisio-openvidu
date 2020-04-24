@@ -17,5 +17,6 @@ class openvidu::params {
   $secret               = 'MY_SECRET'
   $turnserver_enabled   = 1
   $public_port          = 4443
-  $public_url           = $openvidu::public_ip
+  $public_url           = 'not_set'
 }
+virtu

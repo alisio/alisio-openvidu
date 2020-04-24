@@ -2,12 +2,20 @@
 SERVICE_NAME=openviduserver
 PATH_TO_JAR=<%= @install_path %>/openvidu-server-<%= @openvidu_version %>.jar
 PID_PATH_NAME=/tmp/openviduserver-pid
-OPCOES="-Dopenvidu.secret=<%= @secret %> \
-	-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \
-	-Dopenvidu.recording=<%= @recording %> \
-	-Dopenvidu.recording.path=<%= @recording_path %> \
-	-Dkms.uris=<%= @kms_uris %> \
-	-Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %>"
+OPCOES=" \
+-Dopenvidu.secret=<%= @secret %> \
+-Dopenvidu.recording=<%= @recording %> \
+-Dopenvidu.recording.path=<%= @recording_path %> \
+-Dkms.uris=<%= @kms_uris %> \
+-Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %> \
+<% if @public_url == 'not_set'
+%>-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \
+<% else
+%>-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \
+<% end %>
+"
+
+
 case $1 in
 start)
        echo "Starting $SERVICE_NAME ..."
