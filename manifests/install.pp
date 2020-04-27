@@ -5,7 +5,7 @@
 # @example
 #   include openvidu::install
 class openvidu::install inherits openvidu {
-  if $kms_repo_install {
+  if $openvidu::kms_repo_install {
     apt::source { 'kurento':
       location     => "http://ubuntu.openvidu.io/${openvidu::kms_version}",
       release      => $facts['os']['distro']['codename'],
@@ -18,7 +18,7 @@ class openvidu::install inherits openvidu {
       before       => Package[ 'kurento-media-server','coturn','redis-server','openjdk-8-jre','unzip',]
     }
   }
-  if $docker_install {
+  if $openvidu::docker_install {
     class {'docker':}
   }
   group { ['openvidu','kurento']:}
