@@ -7,11 +7,8 @@
 class openvidu::install inherits openvidu {
   $packages = ['kurento-media-server','coturn','redis-server','openjdk-8-jre','unzip']
   $packages_docker = [
-    'apt-transport-https',
-    'ca-certificates',
-    'curl',
-    'gnupg-agent',
-    'software-properties-common',
+    'apt-transport-https','ca-certificates','curl','gnupg-agent',
+    'software-properties-common','docker-ce','docker-ce-cli','containerd.io'
   ]
 
   if $openvidu::kms_repo_install {
@@ -53,6 +50,7 @@ class openvidu::install inherits openvidu {
     comment => 'openvidu',
     home    => '/home/openvidu',
     shell   => '/usr/sbin/nologin',
+    notify       => Exec['apt_update'],
   }
   -> package { $packages:
     ensure => installed,

@@ -70,7 +70,7 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get install -y puppet-agent facter pdk
     /opt/puppetlabs/bin/puppet module install puppetlabs-apt
-    /opt/puppetlabs/bin/puppet module install puppetlabs-docker
+    # /opt/puppetlabs/bin/puppet module install puppetlabs-docker
     /opt/puppetlabs/bin/puppet module install puppet-archive
     /opt/puppetlabs/bin/puppet module install puppet-logrotate
     # /opt/puppetlabs/bin/puppet module install alisio-openvidu

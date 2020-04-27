@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 * add option to enable/disable kms repo install
 * add option do enable/disable docker install
+* Docker module is no longer needed
 
 **Bugfixes**
 

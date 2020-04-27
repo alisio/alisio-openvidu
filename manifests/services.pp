@@ -5,8 +5,13 @@
 # @example
 #   include openvidu::services
 class openvidu::services inherits openvidu {
-  # contain openvidu::config
-  service { [
+  service { 'docker':
+    ensure     => running,
+    enable     => true,
+    hasrestart => true,
+    hasstatus  => true,
+  }
+  -> service { [
       'redis-server',
       'coturn',
       'kurento-media-server',
