@@ -5,18 +5,23 @@
 # @example
 #   include openvidu::install
 class openvidu::install inherits openvidu {
-  apt::source { 'kurento':
-    location     => "http://ubuntu.openvidu.io/${openvidu::kms_version}",
-    release      => $facts['os']['distro']['codename'],
-    repos        => 'kms6',
-    architecture => $facts['architecture'],
-    key          => {
-      id     => '5AFA7A83',
-      server => 'keyserver.ubuntu.com',
-    },
+  if $kms_repo_install {
+    apt::source { 'kurento':
+      location     => "http://ubuntu.openvidu.io/${openvidu::kms_version}",
+      release      => $facts['os']['distro']['codename'],
+      repos        => 'kms6',
+      architecture => $facts['architecture'],
+      key          => {
+        id     => '5AFA7A83',
+        server => 'keyserver.ubuntu.com',
+      },
+      before       => Package[ 'kurento-media-server','coturn','redis-server','openjdk-8-jre','unzip',]
+    }
   }
-  -> class {'docker':}
-  -> group { ['openvidu','kurento']:}
+  if $docker_install {
+    class {'docker':}
+  }
+  group { ['openvidu','kurento']:}
   -> user { 'kurento':
     ensure  => present,
     comment => 'Kurento',
@@ -33,6 +38,7 @@ class openvidu::install inherits openvidu {
   -> package {  [
                 'kurento-media-server',
                 'coturn',
+
                 'redis-server',
                 'openjdk-8-jre',
                 'unzip',

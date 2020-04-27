@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+# Release 0.1.4
+
+**Features**
+
+* add option to enable/disable kms repo install
+* add option do enable/disable docker install
+
+**Bugfixes**
+
+
+**Known Issues**
+
+
 ## Release 0.1.3
 
 **Features**

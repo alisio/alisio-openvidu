@@ -49,9 +49,11 @@ class {'openvidu':
 * `public_ip` - The public IP address of your server. No default
 * `public_url` - The public url address of your server (string). Default is the public ip
 * `network_interfaces` - The network interfaces listening (csv list). Default 'eth0'
+* `docker_install` - Control docker installation (true). Use it according yo your needs. Default 'true
 * `install_path` - The OpenVidu install path (string). Default '/opt/openviduserver'
 * `jks_store_password` - Path for using custom JKS certificate
 * `jks_alias` - Password for the custom JKS
+* `kms_repo_install` - Control kms repo install (boolean). Default to true
 * `kms_version`  Alias for the custom JKS
 * `kms_version` - The version of the Kurento-media-server (string). Default '6.13.0'
 * `kms_uris` - KMS URL's to which OpenVidu Server will try to connect. They are tested in order until a valid one is found (array). Default Value '["ws://localhost:8888/kurento"]'

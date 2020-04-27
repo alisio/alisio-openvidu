@@ -5,10 +5,12 @@
 # @example
 #   include openvidu::params
 class openvidu::params {
+  $docker_install       = true
   $install_path         = '/opt/openvidu'
   $jks_path             = ''
   $jks_store_password   = 'PASSWORD'
   $jks_alias            = 'ALIAS'
+  $kms_repo_install     = true
   $kms_version          = '6.13.0'
   $kms_uris             = '["ws://localhost:8888/kurento"]'
   $logfile              = '/var/log/openvidu.log'
