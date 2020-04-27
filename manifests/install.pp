@@ -5,6 +5,15 @@
 # @example
 #   include openvidu::install
 class openvidu::install inherits openvidu {
+  $packages = ['kurento-media-server','coturn','redis-server','openjdk-8-jre','unzip']
+  $packages_docker = [
+    'apt-transport-https',
+    'ca-certificates',
+    'curl',
+    'gnupg-agent',
+    'software-properties-common',
+  ]
+
   if $openvidu::kms_repo_install {
     apt::source { 'kurento':
       location     => "http://ubuntu.openvidu.io/${openvidu::kms_version}",
@@ -12,14 +21,24 @@ class openvidu::install inherits openvidu {
       repos        => 'kms6',
       architecture => $facts['architecture'],
       key          => {
-        id     => '5AFA7A83',
+        id     => '234821A61B67740F89BFD669FC8A16625AFA7A83',
         server => 'keyserver.ubuntu.com',
       },
-      before       => Package[ 'kurento-media-server','coturn','redis-server','openjdk-8-jre','unzip',]
+      before       => Package[$packages]
     }
   }
-  if $openvidu::docker_install {
-    class {'docker':}
+  if $openvidu::docker_repo_install {
+    apt::source { 'docker':
+      location     => "http://download.docker.com/linux/ubuntu",
+      release      => $facts['os']['distro']['codename'],
+      repos        => 'stable',
+      architecture => $facts['architecture'],
+      key          => {
+        id     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
+        server => 'keyserver.ubuntu.com',
+      },
+      before       => Package[$packages_docker]
+    }
   }
   group { ['openvidu','kurento']:}
   -> user { 'kurento':
@@ -35,14 +54,10 @@ class openvidu::install inherits openvidu {
     home    => '/home/openvidu',
     shell   => '/usr/sbin/nologin',
   }
-  -> package {  [
-                'kurento-media-server',
-                'coturn',
-
-                'redis-server',
-                'openjdk-8-jre',
-                'unzip',
-              ]:
+  -> package { $packages:
+    ensure => installed,
+  }
+  -> package { $packages_docker:
     ensure => installed,
   }
   -> file { '/etc/systemd/system/openviduserver.service':

@@ -49,7 +49,7 @@ class {'openvidu':
 * `public_ip` - The public IP address of your server. No default
 * `public_url` - The public url address of your server (string). Default is the public ip
 * `network_interfaces` - The network interfaces listening (csv list). Default 'eth0'
-* `docker_install` - Control docker installation (true). Use it according yo your needs. Default 'true
+* `docker_repo_install` - Control docker installation (true). Use it according yo your needs. Default 'true
 * `install_path` - The OpenVidu install path (string). Default '/opt/openviduserver'
 * `jks_store_password` - Path for using custom JKS certificate
 * `jks_alias` - Password for the custom JKS
