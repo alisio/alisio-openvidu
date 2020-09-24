@@ -62,8 +62,12 @@ class {'openvidu':
 * `recording` - Enable or disable video recording (boolean). Default true
 * `recording_autostop` - Time in seconds to stop recording a finalized conference (integer). Default '0'
 * `recording_path` - Path where the video files are recorded (string). Default '/opt/openviduserver/recording'
-* `secret` - Openvidu APP Secre (string). Default 'MY_SECRET'
+* `secret` - Openvidu APP Secret (string). Default 'MY_SECRET'
 * `turnserver_enabled` - Enable or disable the included COTURN server
+* `webhook` - set it to true (string)to enable webhook service. Default 'false'
+* `webhook_endpoint` - configure the HTTP endpoint where OpenVidu Server will send the POST messages with session events. Default 'http://localhost:8080/api/webhook/recordingStatusChanged'
+* `webhook_headers` - an array of HTTP headers that OpenVidu Server will append to each POST message. Default '["recording-path: /opt/openvidu/recording"]'
+* `webhook_events` - an array with the type of events you want OpenVidu Server to send to your webhook. Default '["recordingStatusChanged"]'
 
 ## Limitations
 

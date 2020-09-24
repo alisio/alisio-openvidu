@@ -8,6 +8,13 @@ OPCOES=" \
 -Dopenvidu.recording.path=<%= @recording_path %> \
 -Dkms.uris=<%= @kms_uris %> \
 -Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %> \
+<% if @webhook == 'true'
+%>
+-Dopenvidu.webhook=<%= @webhook %> \
+-Dopenvidu.webhook.endpoint=<%= @webhook_endpoint %> \
+-Dopenvidu.webhook.events=<%= @webhook_events %> \
+-Dopenvidu.webhook.headers=<%= @webhook_headers %> \<%
+end %>
 <% if @public_url == 'not_set'
 %>-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \<%
 else
