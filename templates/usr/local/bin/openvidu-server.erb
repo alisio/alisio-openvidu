@@ -2,38 +2,34 @@
 SERVICE_NAME=openviduserver
 PATH_TO_JAR=<%= @install_path %>/openvidu-server-<%= @openvidu_version %>.jar
 PID_PATH_NAME=/tmp/openviduserver-pid
-OPCOES=" \
--Dopenvidu.secret=<%= @secret %> \
--Dopenvidu.recording=<%= @recording %> \
--Dopenvidu.recording.path=<%= @recording_path %> \
--Dkms.uris=<%= @kms_uris %> \
--Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %> \
-<% if @webhook == 'true'
-%>
--Dopenvidu.webhook=<%= @webhook %> \
--Dopenvidu.webhook.endpoint=<%= @webhook_endpoint %> \
--Dopenvidu.webhook.events=<%= @webhook_events %> \
--Dopenvidu.webhook.headers=<%= @webhook_headers %> \<%
-end %>
-<% if @public_url == 'not_set'
-%>-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \<%
-else
-%>-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \<%
-end %>
-<% if @jks_path != ''
-%>-Dserver.ssl.key-store=<%= @jks_path %> \
--Dserver.ssl.key-store-password=<%= @jks_store_password %> \
--Dserver.ssl.key-alias=<%= @jks_alias %> \<%
-end %>
-"
-
 
 case $1 in
 start)
        echo "Starting $SERVICE_NAME ..."
   if [ ! -f $PID_PATH_NAME ]; then
        cd <%= @install_path %>
-       nohup java -jar ${OPCOES} $PATH_TO_JAR >> <%= @logfile %> 2>> <%= @logfile_error %> &
+       nohup java -jar \
+       -Dopenvidu.secret=<%= @secret %> \
+       -Dopenvidu.recording=<%= @recording %> \
+       -Dopenvidu.recording.path=<%= @recording_path %> \
+       -Dkms.uris=<%= @kms_uris %> \
+       -Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %> \
+       <% if @webhook == 'true'
+       %>-Dopenvidu.webhook=<%= @webhook %> \
+       -Dopenvidu.webhook.endpoint=<%= @webhook_endpoint %> \
+       -Dopenvidu.webhook.events=<%= @webhook_events %> \
+       -Dopenvidu.webhook.headers=<%= @webhook_headers %> \<%
+       end %>
+       <% if @public_url == 'not_set'
+       %>-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \<%
+       else
+       %>-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \<%
+       end %><% if @jks_path != ''
+       %>
+       -Dserver.ssl.key-store=<%= @jks_path %> \
+       -Dserver.ssl.key-store-password=<%= @jks_store_password %> \
+       -Dserver.ssl.key-alias=<%= @jks_alias %> \<%end %>
+       $PATH_TO_JAR >> <%= @logfile %> 2>> <%= @logfile_error %> &
        exit
                    echo $! > $PID_PATH_NAME
        echo "$SERVICE_NAME started ..."
