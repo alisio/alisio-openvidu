@@ -11,8 +11,10 @@ start)
        nohup java -jar \
        -Dopenvidu.secret=<%= @secret %> \
        -Dopenvidu.recording=<%= @recording %> \
-       -Dopenvidu.recording.path=<%= @recording_path %> \
-       -Dkms.uris=<%= @kms_uris %> \
+       -Dopenvidu.recording.path=<%= @recording_path %> \<%
+       if @kms_uris != '' %>
+       -Dkms.uris=<%= @kms_uris %> \<%
+       end %>
        -Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %> \
        <% if @webhook == 'true'
        %>-Dopenvidu.webhook=<%= @webhook %> \
