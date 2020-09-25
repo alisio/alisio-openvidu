@@ -19,8 +19,7 @@ start)
        -Dopenvidu.webhook.endpoint=<%= @webhook_endpoint %> \
        -Dopenvidu.webhook.events=<%= @webhook_events %> \
        -Dopenvidu.webhook.headers=<%= @webhook_headers %> \<%
-       end %>
-       <% if @public_url == 'not_set'
+       end %><% if @public_url == 'not_set'
        %>-Dopenvidu.publicurl=https://<%= @public_ip %>:<%= @public_port %>/ \<%
        else
        %>-Dopenvidu.publicurl=https://<%= @public_url %>:<%= @public_port %>/ \<%
