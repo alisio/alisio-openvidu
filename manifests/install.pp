@@ -26,7 +26,7 @@ class openvidu::install inherits openvidu {
   }
   if $openvidu::docker_repo_install {
     apt::source { 'docker':
-      location     => "http://download.docker.com/linux/ubuntu",
+      location     => 'http://download.docker.com/linux/ubuntu',
       release      => $facts['os']['distro']['codename'],
       repos        => 'stable',
       architecture => $facts['architecture'],
@@ -50,7 +50,7 @@ class openvidu::install inherits openvidu {
     comment => 'openvidu',
     home    => '/home/openvidu',
     shell   => '/usr/sbin/nologin',
-    notify       => Exec['apt_update'],
+    notify  => Exec['apt_update'],
   }
   -> package { $packages:
     ensure => installed,

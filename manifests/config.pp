@@ -40,10 +40,10 @@ class openvidu::config inherits openvidu {
     dateext      => true,
     maxage       => 7
   }
-  augeas { "Set kms run user":
-    context => "/files/etc/default/kurento-media-server",
+  augeas { 'Set kms run user':
+    context => '/files/etc/default/kurento-media-server',
     changes => [
-      "set user openvidu",
+      'set user openvidu',
     ],
   }
 }

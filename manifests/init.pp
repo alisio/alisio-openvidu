@@ -23,9 +23,9 @@ class openvidu (
     $recording_path       = $openvidu::params::recording_path,
     $secret               = $openvidu::params::secret,
     $turnserver_enabled   = $openvidu::params::turnserver_enabled,
-    $webhook		          = $openvidu::params::webhook,
-    $webhook_headers	    = $openvidu::params::webhook_headers,
-    $webhook_events	      = $openvidu::params::webhook_events,
+    $webhook              = $openvidu::params::webhook,
+    $webhook_headers      = $openvidu::params::webhook_headers,
+    $webhook_events       = $openvidu::params::webhook_events,
     $webhook_endpoint     = $openvidu::params::webhook_endpoint,
   ) inherits openvidu::params {
   contain openvidu::install

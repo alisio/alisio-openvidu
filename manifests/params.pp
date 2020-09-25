@@ -24,8 +24,8 @@ class openvidu::params {
   $turnserver_enabled   = 1
   $public_port          = 4443
   $public_url           = 'not_set'
-  $webhook		          = 'false'
-  $webhook_headers	    = '[\"recording-path:\ /opt/openvidu/recording\"]'
-  $webhook_events	      = '["recordingStatusChanged"]'
-  $webhook_endpoint	    = 'http://localhost:8080/api/webhook/recordingStatusChanged'
+  $webhook              = 'false'
+  $webhook_headers      = '[\"recording-path:\ /opt/openvidu/recording\"]'
+  $webhook_events       = '["recordingStatusChanged"]'
+  $webhook_endpoint     = 'http://localhost:8080/api/webhook/recordingStatusChanged'
 }
