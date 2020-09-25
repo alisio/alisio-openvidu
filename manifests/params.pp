@@ -12,7 +12,7 @@ class openvidu::params {
   $jks_alias            = 'ALIAS'
   $kms_repo_install     = true
   $kms_version          = '6.13.0'
-  $kms_uris             = '["ws://localhost:8888/kurento"]'
+  $kms_uris             = ''
   $logfile              = '/var/log/openvidu.log'
   $logfile_error        = '/var/log/openvidu_error.log'
   $network_interfaces   = 'eth0'

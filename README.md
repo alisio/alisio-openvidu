@@ -56,7 +56,7 @@ class {'openvidu':
 * `kms_repo_install` - Control kms repo install (boolean). Default to true
 * `kms_version`  Alias for the custom JKS
 * `kms_version` - The version of the Kurento-media-server (string). Default '6.13.0'
-* `kms_uris` - KMS URL's to which OpenVidu Server will try to connect. They are tested in order until a valid one is found (array). Default Value '["ws://localhost:8888/kurento"]'
+* `kms_uris` - KMS URL's to which OpenVidu Server will try to connect. They are tested in order until a valid one is found (array). Default Value ''
 * `logfile` - The OpenVidu logfile path (string). Default '/var/log/openvidu.log'
 * `logfile_error` - The OpenVidu error logfile path (string). Default '/var/log/openvidu_error.log'
 * `recording` - Enable or disable video recording (boolean). Default true
