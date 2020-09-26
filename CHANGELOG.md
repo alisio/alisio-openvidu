@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 **Features**
 
 * add Webhook service config
+* Add openvidu version parameter
 
 **Bugfixes**
 
