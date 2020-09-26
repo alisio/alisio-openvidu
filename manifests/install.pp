@@ -21,7 +21,7 @@ class openvidu::install inherits openvidu {
         id     => '234821A61B67740F89BFD669FC8A16625AFA7A83',
         server => 'keyserver.ubuntu.com',
       },
-      before       => Package[$packages]
+      notify       => Exec['apt_update']
     }
   }
   if $openvidu::docker_repo_install {
@@ -34,7 +34,7 @@ class openvidu::install inherits openvidu {
         id     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
         server => 'keyserver.ubuntu.com',
       },
-      before       => Package[$packages_docker]
+      notify       => Exec['apt_update']
     }
   }
   group { ['openvidu','kurento']:}
@@ -50,10 +50,10 @@ class openvidu::install inherits openvidu {
     comment => 'openvidu',
     home    => '/home/openvidu',
     shell   => '/usr/sbin/nologin',
-    notify  => Exec['apt_update'],
   }
   -> package { $packages:
-    ensure => installed,
+    ensure  => installed,
+    require => Exec['apt_update'],
   }
   -> package { $packages_docker:
     ensure => installed,
