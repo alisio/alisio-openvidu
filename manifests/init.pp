@@ -17,6 +17,7 @@ class openvidu (
     $kms_uris             = $openvidu::params::kms_uris,
     $logfile              = $openvidu::params::logfile,
     $logfile_error        = $openvidu::params::logfile_error,
+    $openvidu_version     = $openvidu::params::openvidu_version,
     $public_url           = $openvidu::params::public_url,
     $recording            = $openvidu::params::recording,
     $recording_autostop   = $openvidu::params::recording_autostop,
