@@ -2,11 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+# Release 0.1.6
+
+**Features**
+
+* add Webhook service config
+
+**Bugfixes**
+
+* Potential resource ordering issues
+* Fix parameters description (README)
+
 # Release 0.1.5
 
 **Features**
 
-* add webWebhook service config
+* Add option to set openvidu version
 
 
 # Release 0.1.4
