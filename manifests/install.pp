@@ -50,13 +50,21 @@ class openvidu::install inherits openvidu {
     comment => 'openvidu',
     home    => '/home/openvidu',
     shell   => '/usr/sbin/nologin',
+    notify  => Package[$packages],
   }
-  -> package { $packages:
-    ensure  => installed,
-    require => Exec['apt_update'],
+  if $openvidu::kms_repo_install or $openvidu::docker_repo_install {
+    package { $packages:
+      ensure  => installed,
+      require => Exec['apt_update'],
+    }
+  } else {
+    package { $packages:
+      ensure  => installed,
+    }
   }
   -> package { $packages_docker:
-    ensure => installed,
+    ensure  => installed,
+    require => Package[$packages],
   }
   -> file { '/etc/systemd/system/openviduserver.service':
     ensure => file,
