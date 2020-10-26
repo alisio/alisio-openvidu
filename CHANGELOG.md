@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+# Release 0.1.8
+
+**Bugfixes**
+- Change webhook parameter type to boolean instead of string
+
 # Release 0.1.7
 
 **Bugfixes**
