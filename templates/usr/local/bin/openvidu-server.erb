@@ -16,7 +16,7 @@ start)
        -Dkms.uris=<%= @kms_uris %> \<%
        end %>
        -Dopenvidu.recording.autostop-timeout=<%= @recording_autostop %> \
-       <% if @webhook == 'true'
+       <% if @webhook == true
        %>-Dopenvidu.webhook=<%= @webhook %> \
        -Dopenvidu.webhook.endpoint=<%= @webhook_endpoint %> \
        -Dopenvidu.webhook.events=<%= @webhook_events %> \
