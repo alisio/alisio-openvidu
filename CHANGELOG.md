@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 # Release 0.2
 
 **Bugfixes**
-- Set kms logrotate
+- Set kms and turn logrotate
 
 
 
