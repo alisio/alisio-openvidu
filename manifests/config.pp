@@ -40,6 +40,27 @@ class openvidu::config inherits openvidu {
     dateext      => true,
     maxage       => 7
   }
+
+  logrotate::rule { 'kurento-media-server':
+    path         => '/var/log/kurento-media-server/*.log',
+    rotate       => 1,
+    rotate_every => 'day',
+    ifempty      => true,
+    dateext      => true,
+    maxage       => 7
+  }
+
+  logrotate::rule { 'turn-server':
+    path         => '/var/log/turn_*.log*',
+    rotate       => 1,
+    rotate_every => 'day',
+    ifempty      => true,
+    dateext      => true,
+    maxage       => 7,
+    su_user      => 'root',
+    su_group     => 'root',
+  }
+
   augeas { 'Set kms run user':
     context => '/files/etc/default/kurento-media-server',
     changes => [
