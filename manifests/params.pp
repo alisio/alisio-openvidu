@@ -5,7 +5,8 @@
 # @example
 #   include openvidu::params
 class openvidu::params {
-  $docker_repo_install       = true
+  $docker_repo_install  = true
+  $cdr_enable           = true
   $install_path         = '/opt/openvidu'
   $jks_path             = ''
   $jks_store_password   = 'PASSWORD'

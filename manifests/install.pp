@@ -81,6 +81,11 @@ class openvidu::install inherits openvidu {
     unless  => "test -d ${openvidu::install_path}",
     path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
   }
+  -> exec { 'Create openvidu log folder':
+    command => "mkdir -p ${openvidu::install_path}/log",
+    unless  => "test -d ${openvidu::install_path}/log",
+    path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
+  }
   -> file { $openvidu::recording_path :
     ensure => directory,
     mode   => '0770',

@@ -6,6 +6,7 @@
 #   include openvidu
 class openvidu (
     $public_ip,
+    $cdr_enable           = $openvidu::params::cdr_enable,
     $network_interfaces   = $openvidu::params::network_interfaces,
     $docker_repo_install  = $openvidu::params::docker_repo_install,
     $install_path         = $openvidu::params::install_path,

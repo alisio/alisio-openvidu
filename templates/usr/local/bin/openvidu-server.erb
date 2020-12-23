@@ -9,6 +9,7 @@ start)
   if [ ! -f $PID_PATH_NAME ]; then
        cd <%= @install_path %>
        nohup java -jar \
+       -Dopenvidu.cdr=<%= @cdr_enable %> \
        -Dopenvidu.secret=<%= @secret %> \
        -Dopenvidu.recording=<%= @recording %> \
        -Dopenvidu.recording.path=<%= @recording_path %> \<%
