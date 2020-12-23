@@ -46,6 +46,7 @@ class {'openvidu':
 ## Reference
 
 ### Parameters
+* `cdr_enable` - Enable/disable CDR logging (boolean). Default to: true.
 * `public_ip` - The public IP address of your server. No default
 * `public_url` - The public url address of your server (string). Default is the public ip
 * `network_interfaces` - The network interfaces listening (csv list). Default 'eth0'

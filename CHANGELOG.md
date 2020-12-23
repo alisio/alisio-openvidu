@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+# Release 0.3
+
+**Features**
+- Add parameter to enable/disable CDR logging (cdr_enable: bool).
+
 # Release 0.2
 
 **Bugfixes**
